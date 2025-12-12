@@ -47,7 +47,6 @@ function M.Open_with_hx(window, pane, url, opts)
     end
 
     local hx_pane = pane:tab():get_pane_direction(opts.direction)
-    wezterm.log_info("fg process: " .. hx_pane:get_foreground_process_name())
     if hx_pane == nil then
         local action = act{
             SplitPane={
