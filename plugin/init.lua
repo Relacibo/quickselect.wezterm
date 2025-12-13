@@ -53,10 +53,10 @@ function M.open_with_hx(window, pane, url, opts)
 
     local hx_pane = pane:tab():get_pane_direction(opts.direction)
 
-    if hx_pane == nil then
-        wezterm.log_info("hx pane not found. Creating new split.")
-    else
+    if hx_pane then
         wezterm.log_info("fg process: " .. hx_pane:get_foreground_process_name())
+    else
+        wezterm.log_info("hx pane not found. Creating new split.")
     end
 
     if not hx_pane then
@@ -64,7 +64,7 @@ function M.open_with_hx(window, pane, url, opts)
             SplitPane = {
                 direction = opts.direction,
                 command = { args = { "hx", filename } },
-                size = { Percent = 75 },
+                size = opt.size
             },
         })
         window:perform_action(action, pane)
