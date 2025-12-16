@@ -64,7 +64,7 @@ function M.open_with_hx(window, pane, url, opts)
             SplitPane = {
                 direction = opts.direction,
                 command = { args = { "hx", filename } },
-                size = opt.size
+                size = opts.size
             },
         })
         window:perform_action(action, pane)
